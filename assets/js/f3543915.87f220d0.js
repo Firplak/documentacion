@@ -1,1 +1,0 @@
-"use strict";(self.webpackChunkfirplak_documentation=self.webpackChunkfirplak_documentation||[]).push([[376],{7698:function(a){a.exports=JSON.parse('{"allTagsPath":"/blog/tags","slug":"/blog/tags/cloud","name":"cloud","count":1,"permalink":"/blog/tags/cloud"}')}}]);
