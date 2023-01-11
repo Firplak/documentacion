@@ -9,7 +9,7 @@ const config = {
   title: 'Firplak',
   tagline: 'Documentacion de TI',
   url: 'https://docs.firplak.com',
-  baseUrl: '/documentacion',
+  baseUrl: '/documentacion/',
   onBrokenLinks: 'throw',
   onBrokenMarkdownLinks: 'warn',
   favicon: 'img/favicon.ico',
