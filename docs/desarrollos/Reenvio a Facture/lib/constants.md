@@ -5,8 +5,7 @@ title: constants
 Module `src.lib.constants`
 ==========================
 
-Expand source code
-
+```python
     from os import environ
     import configparser
     
@@ -22,6 +21,7 @@ Expand source code
     
     PROCESSED_FILE = CONFIG["Log"]["FILE"]
     """str: The path to the file that contains the processed LDFs"""
+```
 
 Global variables
 ----------------

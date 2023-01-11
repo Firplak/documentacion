@@ -4,8 +4,7 @@ title: facture
 Module `src.lib.facture`
 ========================
 
-Expand source code
-
+```python
     import pytest
     import http.client
     import json
@@ -147,6 +146,7 @@ Expand source code
     def test_getFactureInvoiceDetails(invoiceDetails):
         """For testing purposes"""
         assert type(invoiceDetails) is dict
+```
 
 Global variables
 ----------------
@@ -178,8 +178,7 @@ Returns
 
 invoiceDetails (dict): The details of the invoice
 
-Expand source code
-
+```python
     def getFactureInvoiceDetails(JWT: str, invoiceLdf: str) -> dict:
         """
         Gets the details of a specific invoice in the Facture API
@@ -209,6 +208,7 @@ Expand source code
             return json.loads(data.decode("utf-8"))
         except json.decoder.JSONDecodeError:
             return
+```
 
 `def getFactureInvoices(JWT: str) ‑> list`
 
@@ -226,8 +226,7 @@ Returns
 
 invoices (list): All invoices received in the current day
 
-Expand source code
-
+```python
     def getFactureInvoices(JWT: str) -> list:
         """
         It gets all the invoices from the Facture API that were sent today
@@ -262,6 +261,7 @@ Expand source code
             return json.loads(response.text)["items"]
         except json.decoder.JSONDecodeError:
             return
+```
 
 `def getFactureJWT() ‑> str`
 
@@ -272,8 +272,7 @@ Returns
 
 JWT (str): A JWT for connection with the Facture API
 
-Expand source code
-
+```python
     def getFactureJWT() -> str:
         """
         It authenticates with the Facture API and returns a JWT
@@ -298,71 +297,72 @@ Expand source code
             return json.loads(response.text)["accessToken"]
         except json.decoder.JSONDecodeError:
             return
+```
 
 `def invoiceDetails(jwt, invoices)`
 
 For testing purposes
 
-Expand source code
-
+```python
     @pytest.fixture
     def invoiceDetails(jwt, invoices):
         """For testing purposes"""
         return getFactureInvoiceDetails(jwt, invoices[0]["ldf"])
+```
 
 `def invoices(jwt)`
 
 For testing purposes
 
-Expand source code
-
+```python
     @pytest.fixture
     def invoices(jwt):
         """For testing purposes"""
         return getFactureInvoices(jwt)
+```
 
 `def jwt()`
 
 For testing purposes
 
-Expand source code
-
+```python
     @pytest.fixture
     def jwt():
         """For testing purposes"""
         return getFactureJWT()
+```
 
 `def test_getFactureInvoiceDetails(invoiceDetails)`
 
 For testing purposes
 
-Expand source code
-
+```python
     def test_getFactureInvoiceDetails(invoiceDetails):
         """For testing purposes"""
         assert type(invoiceDetails) is dict
+```
 
 `def test_getFactureInvoices(invoices)`
 
 For testing purposes
 
-Expand source code
-
+```python
     def test_getFactureInvoices(invoices):
         """For testing purposes"""
         assert type(invoices) is list
         assert len(invoices) > 0
+```
 
 `def test_getFactureJWT(jwt)`
 
 For testing purposes
 
-Expand source code
-
+```python
     def test_getFactureJWT(jwt):
         """For testing purposes"""
         assert type(jwt) is str
         assert len(jwt) > 0
+```
 
 Index
 =====

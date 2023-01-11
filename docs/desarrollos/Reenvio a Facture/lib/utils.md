@@ -5,8 +5,8 @@ title: utils
 Module `src.lib.utils`
 ======================
 
-Expand source code
 
+```python
     import pytest
     import requests
     
@@ -100,6 +100,7 @@ Expand source code
         """For testing purposes"""
     
         assert "test2" in processed_after_second_modification
+```
 
 Functions
 ---------
@@ -113,8 +114,7 @@ Returns
 
 processedLdfs (list): A list with all processed Ldfs
 
-Expand source code
-
+```python
     def getProcessed() -> list:
         """
         It gets all the registered LDFs
@@ -125,6 +125,7 @@ Expand source code
     
         with open(PROCESSED_FILE, "r", encoding="utf-8") as file:
             return file.read().split("\n")
+```
 
 `def getUrlAsBlob(url: str) ‑> bytes`
 
@@ -142,8 +143,7 @@ Returns
 
 content (bytes): The content of the URL
 
-Expand source code
-
+```python
     def getUrlAsBlob(url: str) -> bytes:
         """
         Gets the content of a URL as a blob
@@ -158,56 +158,57 @@ Expand source code
         headers = {"Content-Type": "application/json"}
         response = requests.request("GET", url, headers=headers, timeout=20)
         return response.content
+```
 
 `def google_content()`
 
 For testing purposes
 
-Expand source code
-
+```python
     @pytest.fixture
     def google_content():
         """For testing purposes"""
     
         return getUrlAsBlob("https://www.google.com")
+```
 
 `def processed()`
 
 For testing purposes
 
-Expand source code
-
+```python
     @pytest.fixture
     def processed():
         """For testing purposes"""
     
         return getProcessed()
+```
 
 `def processed_after_modification()`
 
 For testing purposes
 
-Expand source code
-
+```python
     @pytest.fixture
     def processed_after_modification():
         """For testing purposes"""
     
         registerProcessed("test1")
         return getProcessed()
+```
 
 `def processed_after_second_modification()`
 
 For testing purposes
 
-Expand source code
-
+```python
     @pytest.fixture
     def processed_after_second_modification():
         """For testing purposes"""
     
         registerProcessed("test2")
         return getProcessed()
+```
 
 `def registerProcessed(itemLdf: str) ‑> None`
 
@@ -220,8 +221,7 @@ Args
 
 The LDF of the item
 
-Expand source code
-
+```python
     def registerProcessed(itemLdf: str) -> None:
         """
         It registers the LDF of the item in PROCESSED_FILE
@@ -232,40 +232,41 @@ Expand source code
     
         with open(PROCESSED_FILE, "a", encoding="utf-8") as file:
             file.write(f"{itemLdf}\n")
+```
 
 `def test_getProcessed(processed, processed_after_modification)`
 
 For testing purposes
 
-Expand source code
-
+```python
     def test_getProcessed(processed, processed_after_modification):
         """For testing purposes"""
     
         assert type(processed) is list
         assert "test1" in processed_after_modification
+```
 
 `def test_getUrlAsBlob(google_content)`
 
 For testing purposes
 
-Expand source code
-
+```python
     def test_getUrlAsBlob(google_content):
         """For testing purposes"""
     
         assert type(google_content) is bytes
+```
 
 `def test_registerProcessed(processed_after_second_modification)`
 
 For testing purposes
 
-Expand source code
-
+```python
     def test_registerProcessed(processed_after_second_modification):
         """For testing purposes"""
     
         assert "test2" in processed_after_second_modification
+```
 
 Index
 =====

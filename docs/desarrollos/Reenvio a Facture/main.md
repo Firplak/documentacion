@@ -5,8 +5,7 @@ title: main
 Module `src.main`
 =================
 
-Expand source code
-
+```python
     from .lib.constants import CONFIG
     from .lib.facture import getFactureJWT, getFactureInvoices, getFactureInvoiceDetails
     from .lib.mail import sendMail
@@ -45,14 +44,14 @@ Expand source code
     
     if (__name__ == "__main__"):
         main()
+```
 
 Functions
 ---------
 
 `def main()`
 
-Expand source code
-
+```python
     def main():
         JWT = getFactureJWT()
         invoices = getFactureInvoices(JWT)
@@ -79,6 +78,7 @@ Expand source code
                         ],
                     )
                     registerProcessed(invoice["LDF"])
+```
 
 Index
 =====

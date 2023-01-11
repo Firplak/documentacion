@@ -5,8 +5,7 @@ title: mail
 Module `src.lib.mail`
 =====================
 
-Expand source code
-
+```python
     import smtplib
     from email.mime.application import MIMEApplication
     from email.mime.multipart import MIMEMultipart
@@ -55,6 +54,7 @@ Expand source code
         mailserver.login(CREDENTIALS["EMAIL"], CREDENTIALS["PASSWORD"])
         mailserver.sendmail(CREDENTIALS["EMAIL"], send_to, msg.as_string())
         mailserver.close()
+```
 
 Global variables
 ----------------
@@ -89,8 +89,7 @@ The body of the email
 
 All the files that will go attached with the email. Defaults to None.
 
-Expand source code
-
+```python
     def sendMail(send_to: str, subject: str, text: str, files: list = None) -> None:
         """
         Sends an email with the given parameters
@@ -125,6 +124,7 @@ Expand source code
         mailserver.login(CREDENTIALS["EMAIL"], CREDENTIALS["PASSWORD"])
         mailserver.sendmail(CREDENTIALS["EMAIL"], send_to, msg.as_string())
         mailserver.close()
+```
 
 Index
 =====
