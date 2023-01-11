@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<rss version="2.0" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:content="http://purl.org/rss/1.0/modules/content/">
+    <channel>
+        <title>Firplak Blog</title>
+        <link>https://docs.firplak.com/blog</link>
+        <description>Firplak Blog</description>
+        <lastBuildDate>Wed, 11 Jan 2023 16:41:58 GMT</lastBuildDate>
+        <docs>https://validator.w3.org/feed/docs/rss2.html</docs>
+        <generator>https://github.com/jpmonette/feed</generator>
+        <item>
+            <title><![CDATA[FirplakBot en la nube de Google]]></title>
+            <link>https://docs.firplak.com/blog/fpkbot-gcp</link>
+            <guid>fpkbot-gcp</guid>
+            <pubDate>Wed, 11 Jan 2023 16:41:58 GMT</pubDate>
+            <description><![CDATA[Descripcion]]></description>
+            <content:encoded><![CDATA[<h2 class="anchor anchorWithStickyNavbar_mojV" id="descripcion">Descripcion<a class="hash-link" href="#descripcion" title="Direct link to heading">​</a></h2><p>El despliegue del bot en la nube de Google sigue el siguiente diagrama:</p><p><img alt="Diagrama de la nube" src="/assets/images/firplakbot_diagram-3c93e37eb6c7d7e9602639a96f6a34d2.png" width="753" height="439"></p><p>Como se ve en el diagrama, el despliegue usa las siguientes herramientas:</p><h3 class="anchor anchorWithStickyNavbar_mojV" id="herramientas-de-la-nube-de-google">Herramientas de la nube de Google<a class="hash-link" href="#herramientas-de-la-nube-de-google" title="Direct link to heading">​</a></h3><p>Todas las herramientas de la nube de Google estan bajo la cuenta <strong><a href="mailto:cloud.firplak@gmail.com" target="_blank" rel="noopener noreferrer">cloud.firplak@gmail.com</a></strong> cuya contraseña esta en el Keepass de sistemas.</p><ul><li><strong>Cloud Build</strong>:
+Este se usa para hacer la build del contenedor de Docker que contiene el codigo necesario para la implementacion con Twilio, esto permite que con un Makefile que esta en el repositorio del aplicativo se pueda desplegar de manera casi inmediata.<ul><li><a href="https://console.cloud.google.com/cloud-build/builds?authuser=2&amp;project=firplakbot" target="_blank" rel="noopener noreferrer"><strong>Ir al panel de administracion</strong></a></li></ul></li><li><strong>Cloud Run</strong>:
+En esta herramienta se ejecuta el codigo que permite la implementacion con Twilio y contiene la logica de negocio propia del Bot (cache, bot simple, etc).<ul><li><a href="https://console.cloud.google.com/run?authuser=2&amp;project=firplakbot" target="_blank" rel="noopener noreferrer"><strong>Ir al panel de administracion</strong></a></li></ul></li><li><strong>DialogFlow</strong>:
+Esta herramienta es la encargada de hacer el reconocimiento de lenguaje natural y comunicarse con la implementacion.<ul><li><a href="https://dialogflow.cloud.google.com/#/agent/firplakbot/intents" target="_blank" rel="noopener noreferrer"><strong>Ir al panel de administracion</strong></a></li></ul></li><li><strong>Firebase Storage</strong>
+En esta herramienta se guarda el cache de conversaciones para poder dar respuestas acorde al historial de mensajes.<ul><li><a href="https://console.firebase.google.com/u/2/project/firplakbot/overview" target="_blank" rel="noopener noreferrer"><strong>Ir al panel de administracion</strong></a></li></ul></li></ul><hr><h3 class="anchor anchorWithStickyNavbar_mojV" id="herramientas-externas-a-la-nube-de-google">Herramientas externas a la nube de Google<a class="hash-link" href="#herramientas-externas-a-la-nube-de-google" title="Direct link to heading">​</a></h3><p>Para acceder al api de Freshdesk es necesario conseguir el API key desde el perfil del agente en la interfaz de la aplicacion, <a href="https://support.freshdesk.com/support/solutions/articles/215517-how-to-find-your-api-key" target="_blank" rel="noopener noreferrer"><strong>Ver como</strong></a>, y para acceder a Twilio se ingresa con la cuenta que esta en el Keepass.</p><ul><li><strong>Freshdesk API</strong>:
+Con esta herramienta nos comunicamos con nuestra mesa de ayuda Freshdesk.<ul><li><a href="https://developers.freshdesk.com/api/" target="_blank" rel="noopener noreferrer"><strong>Ir a la documentacion</strong></a></li></ul></li><li><strong>Twilio</strong>:
+Esta herramienta es la que nos permite conectar con el servicio de mensajeria que en este caso es Whatsapp, sin embargo podemos hacer uso de diferentes medios como telefono, sms, etc.<ul><li><a href="https://console.twilio.com/?frameUrl=%2Fconsole%3Fx-target-region%3Dus1" target="_blank" rel="noopener noreferrer"><strong>Ir al panel de administracion</strong></a></li></ul></li></ul>]]></content:encoded>
+            <category>gcp</category>
+            <category>cloud</category>
+        </item>
+    </channel>
+</rss>
