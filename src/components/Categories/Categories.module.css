@@ -5,12 +5,8 @@
 }
 
 .categoryContainer {
-    display: grid;
-    margin-top: 3em;
-    margin-bottom: 3em;
-    width: 70%;
-    grid-template-columns: repeat(3, 1fr);
-    grid-gap: 50px;
+    display: flex;
+    height: 20em;
 }
 
 @media (max-width: 1000px) {
@@ -26,6 +22,7 @@
     align-items: center;
     text-align: center;
     width: 100%;
+    height: 100%;
     transition: .5s;
     color: black;
 }
@@ -67,9 +64,10 @@ a:hover > p {
 
 .image {
     border-radius: 10px;
-    margin-bottom: 2em;
+    margin-bottom: 1em;
     background-color: var(--ifm-color-primary);
-    width: 100%;
+    width: 10em;
+    height: 10em;
     padding: 2em;
 }
 

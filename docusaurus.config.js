@@ -22,7 +22,7 @@ const config = {
       /** @type {import('@docusaurus/preset-classic').Options} */
       ({
         docs: {
-          sidebarPath: require.resolve('./sidebars.js'),
+          //sidebarPath: require.resolve('./sidebars.js'),
           // Please change this to your repo.
           editUrl: 'https://github.com/facebook/docusaurus/tree/main/packages/create-docusaurus/templates/shared/',
         },
@@ -51,19 +51,7 @@ const config = {
         items: [
           {
             type: 'doc',
-            docId: 'test',
-            position: 'left',
-            label: 'Power Apps',
-          },
-          {
-            type: 'doc',
-            docId: 'intro',
-            position: 'left',
-            label: 'Infraestructura',
-          },
-          {
-            type: 'doc',
-            docId: 'intro',
+            docId: 'desarrollos/index',
             position: 'left',
             label: 'Desarrollos',
           },
@@ -81,8 +69,8 @@ const config = {
             title: 'Docs',
             items: [
               {
-                label: 'Tutorial',
-                to: '/docs/intro',
+                label: 'Desarrollos',
+                to: '/docs/desarrollos',
               },
             ],
           },
