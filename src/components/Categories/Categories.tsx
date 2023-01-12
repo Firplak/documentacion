@@ -12,9 +12,20 @@ const CategoriesList: Category[] = [
   {
     name: "Desarrollos",
     desc: "Documentacion de codigo",
-    image:
-      "https://upload.wikimedia.org/wikipedia/commons/thumb/c/c3/Python-logo-notext.svg/1024px-Python-logo-notext.svg.png",
-    path: "/docs/desarrollos",
+    image: "https://svgshare.com/i/pVf.svg",
+    path: "/documentacion/docs/desarrollos",
+  },
+  {
+    name: "Procedimientos e infraestructura",
+    desc: "Documentacion de procedimientos e infraestructura",
+    image: "https://svgshare.com/i/pVK.svg",
+    path: "/documentacion/blog",
+  },
+  {
+    name: "Cursos",
+    desc: "Cursos de programacion",
+    image: "https://svgshare.com/i/pV9.svg",
+    path: "/documentacion/docs/cursos/access",
   },
 ];
 

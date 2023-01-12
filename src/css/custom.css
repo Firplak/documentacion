@@ -6,6 +6,7 @@
 
 /* You can override the default Infima variables here. */
 :root {
+  --ifm-footer-background-color: #e5e5e5;
   --ifm-color-primary: #00a0e4;
   --ifm-color-primary-dark: #0090cd;
   --ifm-color-primary-darker: #0088c2;
@@ -16,6 +17,7 @@
 }
 
 [data-theme='dark'] {
+  --ifm-footer-background-color: #161616;
   --ifm-color-primary: #00a0e4;
   --ifm-color-primary-dark: #0090cd;
   --ifm-color-primary-darker: #008ac4;
@@ -34,4 +36,19 @@
 
 html[data-theme='dark'] .docusaurus-highlight-code-line {
   background-color: rgba(0, 0, 0, 0.3);
+}
+
+html[data-theme='dark'] footer {
+  --ifm-footer-background-color: #161616;
+}
+
+html[data-theme='light'] footer {
+  --ifm-footer-background-color: #e5e5e5;
+  --ifm-footer-title-color: #161616;
+  --ifm-footer-link-color: #161616;
+  color: var(--ifm-font-color-base)
+}
+
+html[data-theme='light'] .footer__items {
+  color: var(--ifm-font-color-base)
 }

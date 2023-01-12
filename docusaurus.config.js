@@ -24,13 +24,13 @@ const config = {
         docs: {
           //sidebarPath: require.resolve('./sidebars.js'),
           // Please change this to your repo.
-          editUrl: 'https://github.com/facebook/docusaurus/tree/main/packages/create-docusaurus/templates/shared/',
+          editUrl: 'https://github.com/firplak/documentacion'
         },
         blog: {
           showReadingTime: true,
           // Please change this to your repo.
           editUrl:
-            'https://github.com/facebook/docusaurus/tree/main/packages/create-docusaurus/templates/shared/',
+            'https://github.com/firplak/documentacion'
         },
         theme: {
           customCss: require.resolve('./src/css/custom.css'),
@@ -44,19 +44,29 @@ const config = {
     ({
       navbar: {
         title: '',
+        hideOnScroll: true,
         logo: {
           alt: 'Firplak logo',
           src: 'img/logo_firplak.png',
         },
         items: [
           {
-            type: 'doc',
-            docId: 'desarrollos/index',
+            to: 'blog',
+            position: 'left',
+            label: 'Procedimientos e infraestructura',
+          },
+          {
+            to: 'docs/desarrollos',
             position: 'left',
             label: 'Desarrollos',
           },
           {
-            href: 'https://github.com/facebook/docusaurus',
+            to: 'docs/cursos/access',
+            position: 'left',
+            label: 'Cursos',
+          },
+          {
+            href: 'https://github.com/firplak/documentacion',
             label: 'GitHub',
             position: 'right',
           },
@@ -69,8 +79,16 @@ const config = {
             title: 'Docs',
             items: [
               {
+                to: 'blog',
+                label: 'Procedimientos e infraestructura',
+              },
+              {
+                to: 'docs/desarrollos',
                 label: 'Desarrollos',
-                to: '/docs/desarrollos',
+              },
+              {
+                to: 'docs/cursos/access',
+                label: 'Cursos',
               },
             ],
           },
@@ -83,7 +101,7 @@ const config = {
               },
               {
                 label: 'GitHub',
-                href: 'https://github.com/facebook/docusaurus',
+                href: 'https://github.com/firplak/documentacion',
               },
             ],
           },
