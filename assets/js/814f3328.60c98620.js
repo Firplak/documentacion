@@ -1,1 +1,0 @@
-"use strict";(self.webpackChunkfirplak_documentation=self.webpackChunkfirplak_documentation||[]).push([[535],{5641:function(e){e.exports=JSON.parse('{"title":"Recent posts","items":[{"title":"Es el proceso X","permalink":"/documentacion/blog/Documentacion de proceso"},{"title":"FirplakBot en la nube de Google","permalink":"/documentacion/blog/fpkbot-gcp"}]}')}}]);
