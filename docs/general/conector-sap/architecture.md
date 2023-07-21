@@ -1,8 +1,8 @@
 # Arquitectura del conector de SAP B1
 
-El conector de SAP es un api programada en **ASP.NET 6.0**, la cual tiene los siguientes servicios registrados en su definicion de inyeccion de dependencias:
+El conector de SAP es un api programada en **ASP.NET 6.0**, la cual tiene los siguientes servicios registrados en su definicion de inyeccion de dependencias
 
-![imagen.png](/.attachments/imagen-699bf14a-6bd0-4a10-8e7a-c0784abe9352.png)
+> TODO: añadir diagrama nuevamente
 
 - Logger (**Global**): Se encarga de todas las tareas relacionadas con el logging del api, esta instancia esta basada en el Singleton que ofrece Serilog.
 
