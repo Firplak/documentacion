@@ -4,17 +4,22 @@ El sistema de plantillas para las notificaciones tiene un funcionamiento relativ
 
 # Plantillas
 
-> **Ejemplo de plantilla**
-> Un ejemplo de esto seria cuando se desea enviar una notificacion cuando se modifica un servicio y se desea informar sobre el consecutivo:
+## Ejemplo de plantilla
+
+Un ejemplo de esto seria cuando se desea enviar una notificacion cuando se modifica un servicio y se desea informar sobre el consecutivo:
+
 > Cuando se modifica la tabla **Servicios** usar la siguiente plantilla
 > `Se modifico el servicio con el consecutivo <% record.consecutivo %>`
 
-> El sistema de plantillas esta disponible solo desde las siguientes columnas de la tabla `Notificaciones` 
-> - `Notificaciones(recipients)`
-> - `Notificaciones(subject_template)`
-> - `Notificaciones(body_template)`
+En este ejemplo se puede evidenciar el uso de los siguientes caracteres ``<% ... %>`, estos indican al sistema de plantillas que se desea cambiar el valor que hay dentro`<% ESTE_VALOR %>`, el cual debe ser un JSONPath procesable por [JMESPath](https://jmespath.org/), este valor debe ser reemplazado por el atributo solicitado del objeto.
 
-En este ejemplo se puede evidenciar el uso de los siguientes caracteres ``<% ... %>`, estos indican al sistema de plantillas que se desea cambiar el valor que hay dentro `<% ESTE_VALOR %>`, el cual debe ser un JSONPath procesable por [JMESPath](https://jmespath.org/), este valor debe ser reemplazado por el atributo solicitado del objeto.
+> El sistema de plantillas esta disponible solo desde las siguientes columnas de la tabla `Notificaciones`
+>
+> ```hs
+> Notificaciones(recipients)
+> Notificaciones(subject_template)
+> Notificaciones(body_template)
+> ```
 
 La estructura del objeto es la siguiente:
 
@@ -45,6 +50,7 @@ La estructura del objeto es la siguiente:
 El atributo users contiene toda llave foranea que referencie a la tabla usuarios de la tabla de la cual se haya originado la solicitud de notificacion, para cada llave foranea se le asignara como valor el respectivo usuario referenciado, entonces internamente cada una de estas llaves foraneas tendra la siguiente estructura
 
 > Linea de la tabla Usuarios
+>
 > ```js
 >{
 >   id: 63,
@@ -118,65 +124,90 @@ Si la tabla que origino la solicitud de notificacion fue **Servicios** por ejemp
 
 Este atributo contiene toda relacion que se haga desde la tabla que origino la solicitud de notificacion hacia otra tabla
 
-> Ejemplo
-> Si la tabla que origino la solicitud de notificacion fue **Servicios** y servicios cuenta con las siguientes llaves foraneas 
-> - `Usuarios(comercial_id)` 
-> - `Usuarios(coordinador_id)`
-> - `Consumidores(consumidor_id)`
-> - `Ubicaciones(ubicacion_id)`
-> Estas se transforman de la siguiente manera
-> - `Usuarios(comercial_id)`      se convierte en `Usuarios_comercial_id` 
-> - `Usuarios(coordinador_id)`    se convierte en `Usuarios_coordinador_id`
-> - `Consumidores(consumidor_id)` se convierte en `Consumidores_consumidor_id`
-> - `Ubicaciones(ubicacion_id)`   se convierte en `Ubicaciones_ubicacion_id`
-> - `Tabla(llave_foranea)`        se convierte en `Tabla_llave_foranea`
-> Y terminan en el atributo relations de la siguiente manera
-> ```js
->{
->   relations: {
->       'Usuarios_comercial_id': { ... },
->       'Usuarios_coordinador_id': { ... },
->       'Consumidores_consumidor_id': { ... };
->       'Ubicaciones_ubicacion_id': { ... }
->   }, 
->   ...
->}
->```
-> Donde todos las llaves tienen los respectivos elementos de la base de datos
+### Ejemplo
+
+Si la tabla que origino la solicitud de notificacion fue **Servicios** y servicios cuenta con las siguientes llaves foraneas.
+
+```hs
+Usuarios(comercial_id) 
+Usuarios(coordinador_id)
+Consumidores(consumidor_id)
+Ubicaciones(ubicacion_id)
+```
+
+Estas se transforman de la siguiente manera
+
+```hs
+Usuarios(comercial_id)      se convierte en `Usuarios_comercial_id
+Usuarios(coordinador_id)    se convierte en `Usuarios_coordinador_id
+Consumidores(consumidor_id) se convierte en `Consumidores_consumidor_id
+Ubicaciones(ubicacion_id)   se convierte en `Ubicaciones_ubicacion_id
+```
+```hs
+Tabla(llave_foranea)        se convierte en `Tabla_llave_foranea
+```
+
+Y terminan en el atributo relations de la siguiente manera
+
+```js
+{
+   relations: {
+       'Usuarios_comercial_id': { ... },
+       'Usuarios_coordinador_id': { ... },
+       'Consumidores_consumidor_id': { ... };
+       'Ubicaciones_ubicacion_id': { ... }
+   }, 
+   ...
+}
+```
+
+ Donde todos las llaves tienen los respectivos elementos de la base de datos
 
 ## Atributo related_users
 
 El funcionamiento es muy similar a el anterior solo que cuando ya tenemos las relaciones definidas, lo que hacemos es extraer de estas relaciones todos los usuarios relacionados
 
-## Ejemplo 1 
+### Ejemplo 1
 
 Una solitidud de notificacion originada por la tabla `Visitas`
+
 ```hs
 Visitas -> Servicio -> Usuarios(coordinador_id)
 ```
+
 En related_users se encuentran todos los `X -> Y -> Usuarios(*)`
 
 > Importante notar que solo nos interesan las relaciones que tengan como destino la tabla `Usuarios`
 
 La manera en la cual se estructuran los nombres de related users es:
 
-## Ejemplo 2 (Ejemplo 1 continuacion)
+### Ejemplo 2 (Ejemplo 1 continuacion)
 
 Vamos a seguir con el ejemplo con la tabla `Visitas`
 
 Las relaciones de la tabla `Visitas` son las siguientes:
-- `Servicios(servicio_id)` 
-- `Usuarios(tecnico_id)` 
-- `Usuarios(modified_by)` 
+
+```hs
+Servicios(servicio_id)
+Usuarios(tecnico_id) 
+Usuarios(modified_by)
+```
 
 Vamos a filtrar todas las relaciones con la tabla `Usuarios` porque ya contamos con estos datos en el **Atributo user**. Quedamos con las siguientes relaciones
-- `Servicios(servicio_id)` 
+
+```hs
+Servicios(servicio_id)
+```
 
 Ahora vamos a identificar las relaciones con la tabla `Usuarios` que hay en cada una de estas tablas, como vimos anteriormente las relaciones que tiene la tabla `Servicios` con la tabla `Usuarios` son las siguientes
-- `Usuarios(comercial_id)` 
-- `Usuarios(coordinador_id)`
+
+```hs
+Usuarios(comercial_id)
+Usuarios(coordinador_id)
+```
 
 Entonces ahora contamos con las siguientes relaciones
+
 ```hs
 Visitas -> Servicios(servicio_id) -> Usuarios(comercial_id)
 Visitas -> Servicios(servicio_id) -> Usuarios(coordinador_id)
@@ -194,6 +225,7 @@ Servicios -> Usuarios(coordinador_id)
 ```
 
 Teniendo estas relaciones las transformamos de la siguiente manera
+
 ```hs
 Servicios -> Usuarios(comercial_id)` se convierte en Servicios_comercial_id
 Servicios -> Usuarios(coordinador_id)` se convierte en Servicios_coordinador_id
