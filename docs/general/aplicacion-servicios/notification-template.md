@@ -49,8 +49,6 @@ La estructura del objeto es la siguiente:
 
 El atributo users contiene toda llave foranea que referencie a la tabla usuarios de la tabla de la cual se haya originado la solicitud de notificacion, para cada llave foranea se le asignara como valor el respectivo usuario referenciado, entonces internamente cada una de estas llaves foraneas tendra la siguiente estructura
 
-> Linea de la tabla Usuarios
->
 > ```js
 >{
 >   id: 63,
@@ -64,11 +62,12 @@ El atributo users contiene toda llave foranea que referencie a la tabla usuarios
 >   correo: "consultor1@firplak.com",
 >   cedula: null
 >}```
+>
+> _Linea de la tabla `Usuarios`_
 
 #### Estructura de users
 
 ```ts
-*/ 
 {
     users: {
         "tecnico_id": {
