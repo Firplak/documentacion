@@ -2,9 +2,9 @@
 
 El sistema de plantillas para las notificaciones tiene un funcionamiento relativamente sencillo. Este permite mediante el uso de [JMESPath](https://jmespath.org/), introducir atributos de un objeto que se hace accesible para la plantilla.
 
-# Plantillas
+## Plantillas
 
-## Ejemplo de plantilla
+### Ejemplo de plantilla
 
 Un ejemplo de esto seria cuando se desea enviar una notificacion cuando se modifica un servicio y se desea informar sobre el consecutivo:
 
@@ -45,7 +45,7 @@ La estructura del objeto es la siguiente:
 
 > Notar la diferencia ente los atributos que son definidos con `{}` y `[]`
 
-## Atributo users
+### Atributo users
 
 El atributo users contiene toda llave foranea que referencie a la tabla usuarios de la tabla de la cual se haya originado la solicitud de notificacion, para cada llave foranea se le asignara como valor el respectivo usuario referenciado, entonces internamente cada una de estas llaves foraneas tendra la siguiente estructura
 
@@ -65,7 +65,7 @@ El atributo users contiene toda llave foranea que referencie a la tabla usuarios
 >   cedula: null
 >}```
 
-### Estructura
+#### Estructura de users
 
 ```ts
 */ 
@@ -85,11 +85,11 @@ El atributo users contiene toda llave foranea que referencie a la tabla usuarios
 }
 ```
 
-## Atributo record
+### Atributo record
 
 Contiene todos las columnas de la linea de la tabla que origino la solicitud de notificacion
 
-### Estructura
+#### Estructura de record
 
 Si la tabla que origino la solicitud de notificacion fue **Servicios** por ejemplo
 
@@ -124,7 +124,7 @@ Si la tabla que origino la solicitud de notificacion fue **Servicios** por ejemp
 
 Este atributo contiene toda relacion que se haga desde la tabla que origino la solicitud de notificacion hacia otra tabla
 
-### Ejemplo
+### Ejemplo de relations
 
 Si la tabla que origino la solicitud de notificacion fue **Servicios** y servicios cuenta con las siguientes llaves foraneas.
 
@@ -143,6 +143,7 @@ Usuarios(coordinador_id)    se convierte en `Usuarios_coordinador_id
 Consumidores(consumidor_id) se convierte en `Consumidores_consumidor_id
 Ubicaciones(ubicacion_id)   se convierte en `Ubicaciones_ubicacion_id
 ```
+
 ```hs
 Tabla(llave_foranea)        se convierte en `Tabla_llave_foranea
 ```
@@ -167,7 +168,7 @@ Y terminan en el atributo relations de la siguiente manera
 
 El funcionamiento es muy similar a el anterior solo que cuando ya tenemos las relaciones definidas, lo que hacemos es extraer de estas relaciones todos los usuarios relacionados
 
-### Ejemplo 1
+### Ejemplo 1 de related_users
 
 Una solitidud de notificacion originada por la tabla `Visitas`
 
@@ -181,7 +182,7 @@ En related_users se encuentran todos los `X -> Y -> Usuarios(*)`
 
 La manera en la cual se estructuran los nombres de related users es:
 
-### Ejemplo 2 (Ejemplo 1 continuacion)
+### Ejemplo 2 (Ejemplo 1 de related_users continuacion)
 
 Vamos a seguir con el ejemplo con la tabla `Visitas`
 
@@ -247,13 +248,13 @@ Y finalmente nuestro atributo related_users termina con la siguiente estructura
 }
  ```
 
-# Filtros
+## Filtros
 
-Todos los filtros se introducen en la columna `Notificaciones(conditions)` en formato JSON con la estructura indicada segun el tipo de datos que se quiera filtrar 
+Todos los filtros se introducen en la columna `Notificaciones(conditions)` en formato JSON con la estructura indicada segun el tipo de datos que se quiera filtrar
 
 > Estos filtros determinan si una notificacion debe ser enviada segun el estado actual de la fila de la tabla que origino la solicitud de notificacion
 
-## De booleanos
+### De booleanos
 
 Un filtro de valores booleanos debe tener la siguiente estructura
 
@@ -265,7 +266,7 @@ Un filtro de valores booleanos debe tener la siguiente estructura
 }
 ```
 
-## De cadenas de texto
+### De cadenas de texto
 
 Un filtro de valores string debe tener la siguiente estructura
 
@@ -277,7 +278,7 @@ Un filtro de valores string debe tener la siguiente estructura
 }
 ```
 
-## De numeros
+### De numeros
 
 Un filtro de valores numericos debe tener la siguiente estructura
 
