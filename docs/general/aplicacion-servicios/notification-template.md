@@ -148,48 +148,72 @@ Este atributo contiene toda relacion que se haga desde la tabla que origino la s
 
 El funcionamiento es muy similar a el anterior solo que cuando ya tenemos las relaciones definidas, lo que hacemos es extraer de estas relaciones todos los usuarios relacionados
 
-> Ejemplo
-> Una solitidud de notificacion originada por la tabla `Visitas`
-> `Visitas -> Servicio -> Usuarios(coordinador_id)`
-> En related_users se encuentran todos los `X -> Y -> Usuarios(*)`
+## Ejemplo 1 
+
+Una solitidud de notificacion originada por la tabla `Visitas`
+```hs
+Visitas -> Servicio -> Usuarios(coordinador_id)
+```
+En related_users se encuentran todos los `X -> Y -> Usuarios(*)`
+
+> Importante notar que solo nos interesan las relaciones que tengan como destino la tabla `Usuarios`
 
 La manera en la cual se estructuran los nombres de related users es:
 
-> Vamos a hacer un ejemplo con la tabla `Visitas`
-> Las relaciones de la tabla `Visitas` son las siguientes:
-> - `Servicios(servicio_id)` 
-> - `Usuarios(tecnico_id)` 
-> - `Usuarios(modified_by)` 
-> Vamos a filtrar todas las relaciones con la tabla `Usuarios` porque ya contamos con estos datos en el **Atributo user**. Quedamos con las siguientes relaciones
-> - `Servicios(servicio_id)` 
-> Ahora vamos a identificar las relaciones con la tabla `Usuarios` que hay en cada una de estas tablas, como vimos anteriormente las relaciones que tiene la tabla `Servicios` con la tabla `Usuarios` son las siguientes
-> - `Usuarios(comercial_id)` 
-> - `Usuarios(coordinador_id)`
-> Entonces ahora contamos con las siguientes relaciones
-> - `Visitas -> Servicios(servicio_id) -> Usuarios(comercial_id) `
-> - `Visitas -> Servicios(servicio_id) -> Usuarios(coordinador_id) `
+## Ejemplo 2 (Ejemplo 1 continuacion)
+
+Vamos a seguir con el ejemplo con la tabla `Visitas`
+
+Las relaciones de la tabla `Visitas` son las siguientes:
+- `Servicios(servicio_id)` 
+- `Usuarios(tecnico_id)` 
+- `Usuarios(modified_by)` 
+
+Vamos a filtrar todas las relaciones con la tabla `Usuarios` porque ya contamos con estos datos en el **Atributo user**. Quedamos con las siguientes relaciones
+- `Servicios(servicio_id)` 
+
+Ahora vamos a identificar las relaciones con la tabla `Usuarios` que hay en cada una de estas tablas, como vimos anteriormente las relaciones que tiene la tabla `Servicios` con la tabla `Usuarios` son las siguientes
+- `Usuarios(comercial_id)` 
+- `Usuarios(coordinador_id)`
+
+Entonces ahora contamos con las siguientes relaciones
+```hs
+Visitas -> Servicios(servicio_id) -> Usuarios(comercial_id)
+Visitas -> Servicios(servicio_id) -> Usuarios(coordinador_id)
+```
+
 > Conviene abstraerlo como se indico anteriormente `X -> Y -> Usuarios(*)`
-> Entonces related_users lo que contiene es esta ultima parte, todas las relaciones con la tabla usuarios que estan presentes en las relaciones con la tabla que origino la solicitud de notificacion, el `Usuarios(*)` de la abstraccion
-> Contando con las relaciones mencionadas anteriormente en la forma `X -> Y -> Usuarios(*)` facilmente podemos ver que hay informacion irrelevante, `X`, entonces reducimos a `Y -> Usuarios(*)`, y para facilitar el manejo de estas relaciones tambien se ignora cual es la llave foranea que hay en `X` de `Y` (por ejemplo, ignoramos que la llave foranea que hay en `Visitas`[`X`] de  `Servicios`[`Y`] que en este caso seria `servicio_id`) para solo quedar con los siguientes datos
-> - `Servicios -> Usuarios(comercial_id)`
-> - `Servicios -> Usuarios(coordinador_id)`
-> Teniendo estas relaciones las transformamos de la siguiente manera
-> - `Servicios -> Usuarios(comercial_id)` se convierte en `Servicios_comercial_id`
-> - `Servicios -> Usuarios(coordinador_id)` se convierte en `Servicios_coordinador_id`
-> Y finalmente nuestro atributo related_users termina con la siguiente estructura
-> ```js
->{
->   related_users:{
->       'Servicios_comercial_id': {
->           ...
->       }
->       'Servicios_coordinador_id': {
->           ...
->       }
->   },
->   ...
->}
-> ```
+
+Entonces related_users lo que contiene es esta ultima parte, todas las relaciones con la tabla usuarios que estan presentes en las relaciones con la tabla que origino la solicitud de notificacion, el `Usuarios(*)` de la abstraccion.
+
+Contando con las relaciones mencionadas anteriormente en la forma `X -> Y -> Usuarios(*)` facilmente podemos ver que hay informacion irrelevante, `X`, entonces reducimos a `Y -> Usuarios(*)`, y para facilitar el manejo de estas relaciones tambien se ignora cual es la llave foranea que hay en `X` de `Y` (por ejemplo, ignoramos que la llave foranea que hay en `Visitas`[`X`] de  `Servicios`[`Y`] que en este caso seria `servicio_id`) para solo quedar con los siguientes datos
+
+```hs
+Servicios -> Usuarios(comercial_id)
+Servicios -> Usuarios(coordinador_id)
+```
+
+Teniendo estas relaciones las transformamos de la siguiente manera
+```hs
+Servicios -> Usuarios(comercial_id)` se convierte en Servicios_comercial_id
+Servicios -> Usuarios(coordinador_id)` se convierte en Servicios_coordinador_id
+```
+
+Y finalmente nuestro atributo related_users termina con la siguiente estructura
+
+```js
+{
+   related_users:{
+       'Servicios_comercial_id': {
+           ...
+       }
+       'Servicios_coordinador_id': {
+           ...
+       }
+   },
+   ...
+}
+ ```
 
 # Filtros
 
