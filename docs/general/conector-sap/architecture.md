@@ -42,21 +42,23 @@ builder.Services.AddSingleton<ISapClient>(
 
 > Los servicios globales son aquellos a los cuales se puede acceder a su instancia Singleton sin necesidad de injeccion de dependencias, un claro ejemplo de estos es el servicio de Logger, ya que este se puede acceder facilmente mediante `using Serilog; Log.Information("Test")`
 
-# Tipos importantes
+## Tipos importantes
 
 - ISapClient
     - SapClient
 - QueryManager: Esta clase es la que se encarga de manejar todas las operaciones de modificacion y obtencion de query's de manera estatica (principalmente usado en QueryController)
 
-# Estructura del api
+## Estructura del api
 
 > El api hace uso del modelo **MVC**
 
-## Modelos
+### Modelos
 
-- SapClient
+- SapClient (implementacion de ISapClient)
+- QueryManager (Deprecado)
+- 
 
-## Controlladores
+### Controlladores
 
 - Query
 - Controlador para cada Bob (Bussiness object) de SAP con los metodos PUT, GET, DELETE, UPDATE. estos metodos se deben usar para implementar CRUD
