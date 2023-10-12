@@ -109,8 +109,8 @@ const config = {
         copyright: `Copyright © ${new Date().getFullYear()} Firplak.`,
       },
       prism: {
-        theme: lightCodeTheme,
-        darkTheme: darkCodeTheme,
+        theme: require('prism-react-renderer/themes/nightOwl'),
+        darkTheme: require('prism-react-renderer/themes/nightOwlLight'),
         additionalLanguages: ['powershell', 'csharp', 'sql', 'java', 'php', 'python', 'typescript', 'javascript', 'json', 'yaml', 'xml', 'markdown', 'css', 'html', 'haskell'],
       },
     }),
