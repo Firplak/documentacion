@@ -10,7 +10,6 @@ Ya contando con este conector basta con crear el conector en el cliente web de l
 
 - Primero nos dirigimos al repositorio: [Conector en github](https://github.com/Firplak/fpk-sap-connector).
 
-![[Pasted image 20231012192147.png]]
 ![diagrama](../assets/deployment_github_main.png)
 - Estando en el repositorio nos dirigimos a **Actions**.
 ![diagrama](../assets/deployment_github_actions.png)
@@ -30,6 +29,7 @@ Ya contando con este conector basta con crear el conector en el cliente web de l
 ![diagrama](../assets/power_automate_f_openapi.png)
 
 - Habiendo hecho esto seleccionamos el archivo que se consiguio en el anterior titulo para la creacion del nuevo conector.
+
 ![diagrama](../assets/power_automate_c_settings.png)
 
 > Debemos asegurarnos que la casilla "Connect via on-premises data gateway" este habilitada.
