@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://docs.firplak.com/documentacion/blog</id>
     <title>Firplak Blog</title>
-    <updated>2023-10-13T20:23:29.229Z</updated>
+    <updated>2023-10-13T21:11:13.038Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://docs.firplak.com/documentacion/blog"/>
     <subtitle>Firplak Blog</subtitle>
@@ -11,7 +11,7 @@
         <title type="html"><![CDATA[FirplakBot en la nube de Google]]></title>
         <id>fpkbot-gcp</id>
         <link href="https://docs.firplak.com/documentacion/blog/fpkbot-gcp"/>
-        <updated>2023-10-13T20:23:29.229Z</updated>
+        <updated>2023-10-13T21:11:13.038Z</updated>
         <summary type="html"><![CDATA[Descripcion]]></summary>
         <content type="html"><![CDATA[<h2 class="anchor anchorWithHideOnScrollNavbar_R0VQ" id="descripcion">Descripcion<a class="hash-link" href="#descripcion" title="Direct link to heading">​</a></h2><p>El despliegue del bot en la nube de Google sigue el siguiente diagrama:</p><p><img alt="Diagrama de la nube" src="/documentacion/assets/images/firplakbot_diagram-3c93e37eb6c7d7e9602639a96f6a34d2.png" width="753" height="439"></p><p>Como se ve en el diagrama, el despliegue usa las siguientes herramientas:</p><h3 class="anchor anchorWithHideOnScrollNavbar_R0VQ" id="herramientas-de-la-nube-de-google">Herramientas de la nube de Google<a class="hash-link" href="#herramientas-de-la-nube-de-google" title="Direct link to heading">​</a></h3><p>Todas las herramientas de la nube de Google estan bajo la cuenta <strong><a href="mailto:cloud.firplak@gmail.com" target="_blank" rel="noopener noreferrer">cloud.firplak@gmail.com</a></strong> cuya contraseña esta en el Keepass de sistemas.</p><ul><li><strong>Cloud Build</strong>:
 Este se usa para hacer la build del contenedor de Docker que contiene el codigo necesario para la implementacion con Twilio, esto permite que con un Makefile que esta en el repositorio del aplicativo se pueda desplegar de manera casi inmediata.<ul><li><a href="https://console.cloud.google.com/cloud-build/builds?authuser=2&amp;project=firplakbot" target="_blank" rel="noopener noreferrer"><strong>Ir al panel de administracion</strong></a></li></ul></li><li><strong>Cloud Run</strong>:
@@ -31,7 +31,7 @@ Esta herramienta es la que nos permite conectar con el servicio de mensajeria qu
         <title type="html"><![CDATA[Rendimiento en ITPLAKINFO]]></title>
         <id>/ITPLAKINFO</id>
         <link href="https://docs.firplak.com/documentacion/blog/ITPLAKINFO"/>
-        <updated>2023-10-13T20:23:29.229Z</updated>
+        <updated>2023-10-13T21:11:13.038Z</updated>
         <summary type="html"><![CDATA[Los siguientes datos se recopilaron del 04 al 09 del mes 05]]></summary>
         <content type="html"><![CDATA[<blockquote><p>Los siguientes datos se recopilaron del 04 al 09 del mes 05</p></blockquote><p>El servidor presenta picos en el uso de CPU en las siguientes horas:</p><ul><li>22:00 a 23:00 (posiblemente una tarea programada)</li></ul><p>![<!-- -->[Pasted image 20231012191702.png]<!-- -->]</p><h1>Uso general 04-09</h1><p>![<!-- -->[Pasted image 20231012191721.png]<!-- -->]</p><p>En total hubo 198 alertas por uso de CPU, en cada uno de estos casos la CPU excedio un uso de <strong>80%</strong>.</p><p>Rendimiento de Servidor por Usuario</p><p>![<!-- -->[Pasted image 20231012191738.png]<!-- -->]</p>]]></content>
     </entry>
