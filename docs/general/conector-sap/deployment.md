@@ -9,24 +9,29 @@ Ya contando con este conector basta con crear el conector en el cliente web de l
 # Paso a paso conseguir definicion
 
 - Primero nos dirigimos al repositorio: [Conector en github](https://github.com/Firplak/fpk-sap-connector).
+
 ![[Pasted image 20231012192147.png]]
+![diagrama](../assets/deployment_github_main.png)
 - Estando en el repositorio nos dirigimos a **Actions**.
-![[Pasted image 20231012192201.png]]
+![diagrama](../assets/deployment_github_actions.png)
+
 - Despues seleccionamos la ejecucion mas reciente.
 - Estando en la ultima ejecucion llendo al fondo de la pagina (scroll al fondo) vamos a ver los artefactos, entre los cuales esta incluido FPKSapConnector, descargamos este zip y dentro de el estara un json con la definicion.
 
-![[Pasted image 20231012192217.png]]
+![diagrama](../assets/deployment_github_artifacts.png)
 
 # Paso a paso creacion por cliente web
 
 - Inicialmente nos dirigimos a **Data -> Custom connectors**.
-![[Pasted image 20231012192259.png]]
+![diagrama](../assets/power_automate_c_connector.png)
 - Despues vamos a ver la siguiente pantalla.
-![[Pasted image 20231012192311.png]]
+![diagrama](../assets/power_automate_c_connector_list.png)
 - En esta pantalla seleccionamos **New custom connector -> Import an Open Api file**.
-![[Pasted image 20231012192321.png]]
+![diagrama](../assets/power_automate_f_openapi.png)
+
 - Habiendo hecho esto seleccionamos el archivo que se consiguio en el anterior titulo para la creacion del nuevo conector.
-![[Pasted image 20231012192334.png]]
+![diagrama](../assets/power_automate_c_settings.png)
+
 > Debemos asegurarnos que la casilla "Connect via on-premises data gateway" este habilitada.
 
 Ya con esto podemos terminar la creacion del conector y empezar a usarlo.
@@ -110,5 +115,4 @@ pac org select -env <id del entorno (output del anterior)>
 
 #Crear conector 
 pac connector create -df .\apiDefinition.json -pf .\apiProperties.json -if .\icon.png -sol <Nombre del conector>
-
 ```
