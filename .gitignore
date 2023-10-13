@@ -7,6 +7,10 @@
 # Generated files
 .docusaurus
 .cache-loader
+.obsidian/**/*
+.obsidian
+.attachments/**/*
+.attachments
 
 # Misc
 .DS_Store

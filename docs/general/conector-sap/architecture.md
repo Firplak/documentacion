@@ -2,7 +2,7 @@
 
 El conector de SAP es un api programada en **ASP.NET 6.0**, la cual tiene los siguientes servicios registrados en su definicion de inyeccion de dependencias
 
-> TODO: añadir diagrama nuevamente
+![[Pasted image 20231012191957.png]]
 
 - Logger (**Global**): Se encarga de todas las tareas relacionadas con el logging del api, esta instancia esta basada en el Singleton que ofrece Serilog.
 
@@ -56,7 +56,6 @@ builder.Services.AddSingleton<ISapClient>(
 
 - SapClient (implementacion de ISapClient)
 - QueryManager (Deprecado)
-- 
 
 ### Controlladores
 
@@ -66,7 +65,6 @@ builder.Services.AddSingleton<ISapClient>(
     - UPDATE: Actualizacion
     - DELETE: Eliminar
     - GET: Obtener datos
-
 
 # Implementacion autenticacion y autorizacion
 
