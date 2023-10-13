@@ -15,6 +15,7 @@ const config = {
   favicon: 'img/favicon.ico',
   organizationName: 'Firplak', // Usually your GitHub org/user name.
   projectName: 'Firplak-Documentation', // Usually your repo name.
+  staticDirectories: ['public', 'static'],
 
   presets: [
     [
